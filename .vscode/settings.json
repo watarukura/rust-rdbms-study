@@ -1,4 +1,3 @@
 {
-    "rust.rustfmt_path": "src/",
     "editor.formatOnSave": true,
 }
