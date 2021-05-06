@@ -17,3 +17,5 @@ RUN rustup component add rls
 
 # utility for Cargo.toml
 RUN cargo install cargo-edit
+
+RUN cargo install cargo-make
