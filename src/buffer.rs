@@ -1,7 +1,11 @@
+// Cell: 読み取り専用の値の中に書込み可能な値を作る
+// RefCell: 実行時にデータ競合を検証する
+// https://doc.rust-jp.rs/book-ja/ch15-05-interior-mutability.html
 use std::cell::{Cell, RefCell};
 use std::collections::HashMap;
 use std::io;
 use std::ops::{Index, IndexMut};
+// Rc: Refference Counter
 use std::rc::Rc;
 
 use crate::disk::{DiskManager, PageId, PAGE_SIZE};
@@ -62,6 +66,8 @@ impl BufferPool {
         self.buffers.len()
     }
 
+    // evict: 立ち退き
+    // Clock-sweep: バッファプール内を巡回してusage_countが0のものを探す
     fn evict(&mut self) -> Option<BufferId> {
         let pool_size = self.size();
         let mut consecutive_pinned = 0;
