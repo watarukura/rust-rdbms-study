@@ -18,4 +18,8 @@ RUN rustup component add rls
 # utility for Cargo.toml
 RUN cargo install cargo-edit
 
+# build utility
 RUN cargo install cargo-make
+
+# language server protocol
+RUN rustup +nightly component add rust-analyzer-preview
